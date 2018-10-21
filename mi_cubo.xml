@@ -1,0 +1,62 @@
+<Schema name="esquema_uah">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Rol">
+    <Hierarchy name="Rol" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_rol">
+      </Table>
+      <Level name="Rol" visible="true" table="dim_rol" column="id" nameColumn="rol" ordinalColumn="rol" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Asignatura">
+    <Hierarchy name="Asignatura" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_asignatura">
+      </Table>
+      <Level name="Asignatura" visible="true" table="dim_asignatura" column="id" nameColumn="asignatura" ordinalColumn="asignatura" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Curso">
+    <Hierarchy name="Curso" visible="true" hasAll="true" primaryKey="idcurso">
+      <Table name="dim_cursos">
+      </Table>
+      <Level name="Curso" visible="true" table="dim_cursos" column="idcurso" nameColumn="curso" ordinalColumn="curso" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Zona">
+    <Hierarchy name="Zona" visible="true" hasAll="true" primaryKey="idzona">
+      <Table name="dim_zonas">
+      </Table>
+      <Level name="Zona" visible="true" table="dim_zonas" column="idzona" nameColumn="zona" ordinalColumn="zona" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="uah" visible="true" cache="true" enabled="true">
+    <Table name="fact_salida">
+    </Table>
+    <DimensionUsage source="Rol" name="Rol" visible="true" foreignKey="idrol" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Asignatura" name="Asignatura" visible="true" foreignKey="idasignatura" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Curso" name="Curso" visible="true" foreignKey="idcurso" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Zona" name="Zona" visible="true" foreignKey="idzona" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="elipse" column="elipse" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="manoalzada" column="manoalzada" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="nota" column="nota" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="rectangulo" column="rectangulo" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="resaltar" column="resaltar" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="subrayar" column="subrayar" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="tachar" column="tachar" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="texto" column="texto" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
